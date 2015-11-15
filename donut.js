@@ -32,16 +32,15 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   //calculates hourly sales using custGeneration()
   this.hourlySales = function() {
     var customers = this.custGeneration();
-    var hourlyDonuts = (customers * this.avgDonuts).toFixed(1);
+    var hourlyDonuts = (customers * this.avgDonuts);
     console.log(hourlyDonuts + " donuts sold this hour");
-
     return hourlyDonuts;
   }
 
   //adds sales to total donut sales
   this.addTotal = function(moreSales) {
     console.log(totalSales);
-    totalSales += moreSales;
+    totalSales = totalSales + moreSales;
     console.log(totalSales + " donuts sold this day");
   }
 
@@ -49,6 +48,11 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   this.dailySales = function() {
     console.log(totalSales + " donuts sold today");
     return totalSales;
+  }
+
+  //Clears total sales
+  this.clearSales = function() {
+    totalSales = 0;
   }
 
 }
@@ -64,20 +68,44 @@ var allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
 
 // Script to calculate and append sales data to table
 
-allShops.forEach(function(shop){
-  var table = document.getElementById("shops");
-  var newRow = document.createElement("tr");
+function buildTable(){
+  document.getElementById("shops").innerHTML = "";
 
-  var name = document.createElement("td");
-  name.textContent = shop.shopName;
-  newRow.appendChild(name);
+  allShops.forEach(function(shop){
+    shop.clearSales(); // resets daily sales
 
-    for (i = 0; i < 11; i++) {
-      var salesTest = document.createElement("td");
-      salesTest.textContent = shop.hourlySales();
+    // prints location title to table
+    var table = document.getElementById("shops");
+    var newRow = document.createElement("tr");
 
-      newRow.appendChild(salesTest);
-      table.appendChild(newRow);
-    }
+    var name = document.createElement("td");
+    name.textContent = shop.shopName;
+    newRow.appendChild(name);
 
-});
+    // generates and prints hourly sales
+      for (i = 0; i < 11; i++) {
+        var salesTest = document.createElement("td");
+        var sales = shop.hourlySales();
+        salesTest.textContent = sales.toFixed(1);
+        shop.addTotal(sales);
+
+        newRow.appendChild(salesTest);
+        table.appendChild(newRow);
+      }
+
+    // prints total sales for location
+
+    var salesTotal = document.createElement("td");
+    salesTotal.textContent = shop.dailySales().toFixed(1);
+
+    newRow.appendChild(salesTotal);
+    table.appendChild(newRow);
+  });
+}
+
+var resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', buildTable);
+
+
+
+buildTable();

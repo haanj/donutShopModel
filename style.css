@@ -1,0 +1,28 @@
+table {
+  padding: 20px;
+  border-spacing: 10px;
+}
+
+td {
+  text-align: right;
+}
+
+thead tr td{
+  border-bottom: 1px;
+}
+
+.text {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.button {
+  margin: auto;
+  text-align: center;
+}
+
+#intro {
+  text-align: left;
+}
+

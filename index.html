@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <head>
   <title>Donut Shops!</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>Locations and Calculated Sales</h2>
+  <h1 id="heading" class="text">Locations and Calculated Sales</h2>
+  <p id="intro" class="text">This table models possible hourly donut sales using existing sales data. Press the 'RESET' button to recalculate.</p>
   <table>
     <thead>
       <tr>
@@ -19,10 +21,12 @@
         <td>4:00 PM</td>
         <td>5:50 PM</td>
         <td>6:00 PM</td>
+        <td>Total Donuts Sold</td>
       </tr>
     </thead>
     <tbody id="shops">
     </tbody>
   </table>
+  <div class='button'><button id="reset">RESET</button></div>
   <script src="donut.js"></script>
 </body>
