@@ -4,28 +4,11 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgDonuts = avgDonuts;
-  this.salesReportTimes =
-    [
-      "7:00",
-      "8:00",
-      "9:00",
-      "10:00",
-      "11:00",
-      "12:00",
-      "1:00",
-      "2:00",
-      "3:00",
-      "4:00",
-      "5:00",
-      "6:00"
-    ];
-
   var totalSales = 0;
 
   //returns random customers between min and max
   this.custGeneration = function() {
     var customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-    console.log(customers + " customers this hour");
     return customers;
   }
 
@@ -33,20 +16,16 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   this.hourlySales = function() {
     var customers = this.custGeneration();
     var hourlyDonuts = (customers * this.avgDonuts);
-    console.log(hourlyDonuts + " donuts sold this hour");
     return hourlyDonuts;
   }
 
   //adds sales to total donut sales
   this.addTotal = function(moreSales) {
-    console.log(totalSales);
     totalSales = totalSales + moreSales;
-    console.log(totalSales + " donuts sold this day");
   }
 
   //returns total sales
   this.dailySales = function() {
-    console.log(totalSales + " donuts sold today");
     return totalSales;
   }
 
@@ -90,8 +69,9 @@ function buildTable(){
         shop.addTotal(sales);
 
         newRow.appendChild(salesTest);
-        table.appendChild(newRow);
       }
+    table.appendChild(newRow);
+
 
     // prints total sales for location
 
@@ -103,9 +83,28 @@ function buildTable(){
   });
 }
 
+buildTable();
+
+// event Listening
 var resetButton = document.getElementById('reset');
+var submitButton = document.getElementById('newLocation');
+
 resetButton.addEventListener('click', buildTable);
 
+submitButton.addEventListener('submit', function(event){
+    event.preventDefault();
+    var newName = event.target.locationName.value;
+    var newMinCust = Number(event.target.minCust.value);
+    var newMaxCust = Number(event.target.maxCust.value);
+    var newAvgDonuts = Number(event.target.avgDonuts.value);
 
+    var newStore = new DonutShop(newName, newMinCust, newMaxCust, newAvgDonuts);
+    event.target.locationName.value = "";
+    event.target.minCust.value = "";
+    event.target.maxCust.value = "";
+    event.target.avgDonuts.value = "";
 
-buildTable();
+    allShops.push(newStore);
+    buildTable();
+
+});
