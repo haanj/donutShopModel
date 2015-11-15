@@ -36,17 +36,20 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
 
 }
 
-var downtown = new DonutShop("Downtown", 8, 43, 4.5);
-var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
-var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
-var wedgewood = new DonutShop("Wedgewood", 2, 28, 1.25);
-var ballard = new DonutShop("Ballard", 8, 56, 3.75);
+// Initializes array of existing donut shops
+var allShops = [];
 
-var allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
+function initialTable(){
+  var downtown = new DonutShop("Downtown", 8, 43, 4.5);
+  var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
+  var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
+  var wedgewood = new DonutShop("Wedgewood", 2, 28, 1.25);
+  var ballard = new DonutShop("Ballard", 8, 56, 3.75);
+  allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
+  buildTable();
+}
 
-
-// Script to calculate and append sales data to table
-
+// Calculates and append sales data to table
 function buildTable(){
   document.getElementById("shops").innerHTML = "";
 
@@ -72,9 +75,7 @@ function buildTable(){
       }
     table.appendChild(newRow);
 
-
     // prints total sales for location
-
     var salesTotal = document.createElement("td");
     salesTotal.textContent = shop.dailySales().toFixed(1);
 
@@ -83,15 +84,19 @@ function buildTable(){
   });
 }
 
-buildTable();
-
 // event Listening
-var resetButton = document.getElementById('reset');
-var submitButton = document.getElementById('newLocation');
 
+// Rebuilds the page, recalculating sales
+var resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', buildTable);
 
+var rebuildButton = document.getElementById('rebuild');
+rebuildButton.addEventListener('click', initialTable);
+
+// Adds a user-inputted location, rebuilds the page
+var submitButton = document.getElementById('newLocation');
 submitButton.addEventListener('submit', function(event){
+
     event.preventDefault();
     var newName = event.target.locationName.value;
     var newMinCust = Number(event.target.minCust.value);
@@ -108,3 +113,7 @@ submitButton.addEventListener('submit', function(event){
     buildTable();
 
 });
+
+
+// initial table build on page load
+initialTable();

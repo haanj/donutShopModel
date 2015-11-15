@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 table {
   padding: 20px;
   border-spacing: 10px;
@@ -9,6 +14,14 @@ td {
 
 thead tr td{
   border-bottom: 1px;
+}
+
+form {
+  max-width:700px;
+}
+
+form input {
+
 }
 
 .text {
@@ -25,4 +38,3 @@ thead tr td{
 #intro {
   text-align: left;
 }
-
