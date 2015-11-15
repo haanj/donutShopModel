@@ -1,24 +1,26 @@
 //DonutShop Object
-function DonutShop(minCust, maxCust, avgDonuts) {
+function DonutShop(shopName, minCust, maxCust, avgDonuts) {
+  this.shopName = shopName;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgDonuts = avgDonuts;
+  this.salesReportTimes =
+    [
+      "7:00",
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "1:00",
+      "2:00",
+      "3:00",
+      "4:00",
+      "5:00",
+      "6:00"
+    ];
 
   var totalSales = 0;
-  var salesReportTimes =
-    [
-      "7:00-7:59",
-      "8:00-8:59",
-      "9:00-9:59",
-      "10:00-10:59",
-      "11:00-11:59",
-      "12:00-12:59",
-      "1:00-1:59",
-      "2:00-2:59",
-      "3:00-3:59",
-      "4:00-4:59",
-      "5:00-5:59"
-    ];
 
   //returns random customers between min and max
   this.custGeneration = function() {
@@ -30,8 +32,10 @@ function DonutShop(minCust, maxCust, avgDonuts) {
   //calculates hourly sales using custGeneration()
   this.hourlySales = function() {
     var customers = this.custGeneration();
-    console.log(customers * this.avgDonuts + " donuts sold this hour");
-    return customers * this.avgDonuts;
+    var hourlyDonuts = (customers * this.avgDonuts).toFixed(1);
+    console.log(hourlyDonuts + " donuts sold this hour");
+
+    return hourlyDonuts;
   }
 
   //adds sales to total donut sales
@@ -49,8 +53,31 @@ function DonutShop(minCust, maxCust, avgDonuts) {
 
 }
 
-var downtown = new DonutShop(8, 43, 4.5);
-var capitolHill = new DonutShop(4, 37, 2);
-var southLakeUnion = new DonutShop(9, 23, 6.33);
-var wedgewood = new DonutShop(2, 28, 1.25);
-var ballard = new DonutShop(8, 56, 3.75);
+var downtown = new DonutShop("Downtown", 8, 43, 4.5);
+var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
+var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
+var wedgewood = new DonutShop("Wedgewood", 2, 28, 1.25);
+var ballard = new DonutShop("Ballard", 8, 56, 3.75);
+
+var allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
+
+
+// Script to calculate and append sales data to table
+
+allShops.forEach(function(shop){
+  var table = document.getElementById("shops");
+  var newRow = document.createElement("tr");
+
+  var name = document.createElement("td");
+  name.textContent = shop.shopName;
+  newRow.appendChild(name);
+
+    for (i = 0; i < 11; i++) {
+      var salesTest = document.createElement("td");
+      salesTest.textContent = shop.hourlySales();
+
+      newRow.appendChild(salesTest);
+      table.appendChild(newRow);
+    }
+
+});
