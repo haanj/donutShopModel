@@ -83,20 +83,28 @@ function buildTable(){
   });
 }
 
+buildTable();
+
+// event Listening
 var resetButton = document.getElementById('reset');
 var submitButton = document.getElementById('newLocation');
 
 resetButton.addEventListener('click', buildTable);
 
-
-
 submitButton.addEventListener('submit', function(event){
+    event.preventDefault();
+    var newName = event.target.locationName.value;
+    var newMinCust = Number(event.target.minCust.value);
+    var newMaxCust = Number(event.target.maxCust.value);
+    var newAvgDonuts = Number(event.target.avgDonuts.value);
+
+    var newStore = new DonutShop(newName, newMinCust, newMaxCust, newAvgDonuts);
+    event.target.locationName.value = "";
+    event.target.minCust.value = "";
+    event.target.maxCust.value = "";
+    event.target.avgDonuts.value = "";
+
+    allShops.push(newStore);
+    buildTable();
 
 });
-
-
-
-
-
-
-buildTable();
