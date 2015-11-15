@@ -84,7 +84,7 @@ function buildTable(){
   });
 }
 
-// event Listening
+//--- event Listening ---
 
 // Rebuilds the page, recalculating sales
 var resetButton = document.getElementById('reset');
