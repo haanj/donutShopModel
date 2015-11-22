@@ -8,8 +8,6 @@ body {
   padding: 15px;
   max-width: 90%;
   background-color: #95AB63;
-
-
 }
 
 main {
@@ -17,7 +15,6 @@ main {
   background-color: #BDD684;
   border: solid;
   border-color: #E2F0D6;
-
 }
 
 table {
@@ -40,8 +37,8 @@ thead tr td{
 }
 
 form {
-  margin-left: 15px;
-  clear: both;
+  max-width: 45%;
+  margin: auto;
 }
 
 form input {
@@ -58,6 +55,10 @@ form input {
   text-align: center;
 }
 
+.formSet {
+  display:flex;
+  justify-content: space-between;
+}
 
 #intro {
   text-align: left;
