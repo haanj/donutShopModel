@@ -1,4 +1,4 @@
-* {
+html {
   font-family: 'Roboto Condensed', sans-serif;
   color: #10222B;
 }
@@ -9,12 +9,18 @@ body {
   background-color: #95AB63;
 }
 
+a {
+  text-decoration: none;
+  color: #F6FFE0;
+}
+
 header {
+  background-color: #10222B;
+  color: #F6FFE0;
   margin: auto;
   max-width:80%;
   border-color: #E2F0D6;
   border-style: solid;
-  background-color: #F6FFE0;
   display: flex;
   border-collapse: collapse;
   justify-content: space-between;
@@ -23,6 +29,7 @@ header {
 
 main {
   margin: auto;
+  margin-top: -1px;
   max-width: 80%;
   background-color: #BDD684;
   border: solid;
@@ -87,6 +94,7 @@ form input {
 
 .topNav {
   display:inline-block;
+  margin-right: 15px;
 }
 
 #intro {
@@ -98,8 +106,12 @@ form input {
 
 #heading {
   font-size: 150%;
+  margin-top: 10px;
+
 }
+
 
 #logo {
   max-height: 100px;
+  margin-bottom: -1px;
 }
