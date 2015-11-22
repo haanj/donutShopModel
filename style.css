@@ -10,11 +10,23 @@ body {
   background-color: #95AB63;
 }
 
+header {
+  max-width:80%;
+  border-color: #E2F0D6;
+  border-style: solid;
+  background-color: #F6FFE0;
+  display: flex;
+  max-height: 60px;
+  border-collapse: collapse;
+  justify-content: space-between;
+}
+
 main {
   max-width: 80%;
   background-color: #BDD684;
   border: solid;
   border-color: #E2F0D6;
+  border-collapse: collapse;
 }
 
 table {
@@ -53,6 +65,8 @@ form input {
 .button {
   margin: auto;
   text-align: center;
+  position: relative;
+  top: 2px;
 }
 
 .formSet {
@@ -60,7 +74,14 @@ form input {
   justify-content: space-between;
 }
 
+
+
 #intro {
   text-align: left;
   max-width: 70%;
+}
+
+#logo {
+  max-width: 60px;
+  max-height: 60px;
 }
