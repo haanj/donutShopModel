@@ -5,36 +5,38 @@
 
 body {
   margin: 0 auto;
-  padding: 15px;
-  max-width: 90%;
+  min-height: 300%;
   background-color: #95AB63;
 }
 
 header {
+  margin: auto;
   max-width:80%;
   border-color: #E2F0D6;
   border-style: solid;
   background-color: #F6FFE0;
   display: flex;
-  max-height: 60px;
   border-collapse: collapse;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 main {
+  margin: auto;
   max-width: 80%;
   background-color: #BDD684;
   border: solid;
   border-color: #E2F0D6;
+  border-style: solid;
   border-collapse: collapse;
 }
 
 table {
   max-width: 95%;
   font-size: 80%;
-  padding: 5;
-  border-spacing: 5px;
+  border-spacing: 10px;
   margin: auto;
+  margin-top: 10px;
   border-color: #E2F0D6;
   border-style: solid;
   background-color: #F6FFE0;
@@ -42,6 +44,8 @@ table {
 
 td {
   text-align: right;
+  padding: 0 5px 0 5px;
+
 }
 
 thead tr td{
@@ -51,9 +55,15 @@ thead tr td{
 form {
   max-width: 45%;
   margin: auto;
+  margin-top: 15px;
+  font-size: 80%;
 }
 
 form input {
+}
+
+.container {
+
 }
 
 .text {
@@ -67,6 +77,7 @@ form input {
   text-align: center;
   position: relative;
   top: 2px;
+  font-size: 80%;
 }
 
 .formSet {
@@ -74,14 +85,21 @@ form input {
   justify-content: space-between;
 }
 
-
+.topNav {
+  display:inline-block;
+}
 
 #intro {
   text-align: left;
   max-width: 70%;
+  font-size: 90%;
+
+}
+
+#heading {
+  font-size: 150%;
 }
 
 #logo {
-  max-width: 60px;
-  max-height: 60px;
+  max-height: 100px;
 }
