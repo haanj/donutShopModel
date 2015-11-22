@@ -1,31 +1,49 @@
-* {
+html {
   font-family: 'Roboto Condensed', sans-serif;
   color: #10222B;
 }
 
 body {
   margin: 0 auto;
-  padding: 15px;
-  max-width: 90%;
+  min-height: 300%;
   background-color: #95AB63;
+}
 
+a {
+  text-decoration: none;
+  color: #F6FFE0;
+}
 
+header {
+  background-color: #10222B;
+  color: #F6FFE0;
+  margin: auto;
+  max-width:80%;
+  border-color: #E2F0D6;
+  border-style: solid;
+  display: flex;
+  border-collapse: collapse;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 main {
+  margin: auto;
+  margin-top: -1px;
   max-width: 80%;
   background-color: #BDD684;
   border: solid;
   border-color: #E2F0D6;
-
+  border-style: solid;
+  border-collapse: collapse;
 }
 
 table {
   max-width: 95%;
   font-size: 80%;
-  padding: 5;
-  border-spacing: 5px;
+  border-spacing: 10px;
   margin: auto;
+  margin-top: 10px;
   border-color: #E2F0D6;
   border-style: solid;
   background-color: #F6FFE0;
@@ -33,6 +51,8 @@ table {
 
 td {
   text-align: right;
+  padding: 0 5px 0 5px;
+
 }
 
 thead tr td{
@@ -40,11 +60,17 @@ thead tr td{
 }
 
 form {
-  margin-left: 15px;
-  clear: both;
+  max-width: 45%;
+  margin: auto;
+  margin-top: 15px;
+  font-size: 80%;
 }
 
 form input {
+}
+
+.container {
+
 }
 
 .text {
@@ -56,10 +82,41 @@ form input {
 .button {
   margin: auto;
   text-align: center;
+  position: relative;
+  top: 2px;
+  font-size: 80%;
 }
 
+.formSet {
+  display:flex;
+  justify-content: space-between;
+}
+
+.topNav {
+  display:inline-block;
+  margin-right: 15px;
+}
 
 #intro {
   text-align: left;
   max-width: 70%;
+  font-size: 90%;
+
+}
+
+#heading {
+  font-size: 150%;
+  margin-top: 10px;
+
+}
+
+
+#logo {
+  display: block;
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  margin-bottom: -1px;
+  margin-left: -1px;
 }
