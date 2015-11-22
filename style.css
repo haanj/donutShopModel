@@ -1,11 +1,30 @@
+* {
+  font-family: Cinzel;
+  color: #10222B;
+}
+
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 15px;
+  max-width: 90%;
+  background-color: #E2F0D6;
+
+}
+
+main {
+  max-width: 80%;
+  background-color: #BDD684;
+
+
 }
 
 table {
+  max-width: 90%;
+  font-size: 60%;
   padding: 20px;
   border-spacing: 10px;
+  background-color: #95AB63;
+  margin: auto;
 }
 
 td {
@@ -25,7 +44,7 @@ form input {
 }
 
 .text {
-  max-width: 700px;
+  max-width: 95%;
   margin: auto;
   text-align: center;
 }
