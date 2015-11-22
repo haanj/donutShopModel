@@ -1,5 +1,5 @@
 * {
-  font-family: Cinzel;
+  font-family: 'Roboto Condensed', sans-serif;
   color: #10222B;
 }
 
@@ -7,24 +7,28 @@ body {
   margin: 0 auto;
   padding: 15px;
   max-width: 90%;
-  background-color: #E2F0D6;
+  background-color: #95AB63;
+
 
 }
 
 main {
   max-width: 80%;
   background-color: #BDD684;
-
+  border: solid;
+  border-color: #E2F0D6;
 
 }
 
 table {
-  max-width: 90%;
-  font-size: 60%;
-  padding: 20px;
-  border-spacing: 10px;
-  background-color: #95AB63;
+  max-width: 95%;
+  font-size: 80%;
+  padding: 5;
+  border-spacing: 5px;
   margin: auto;
+  border-color: #E2F0D6;
+  border-style: solid;
+  background-color: #F6FFE0;
 }
 
 td {
@@ -36,11 +40,11 @@ thead tr td{
 }
 
 form {
-  max-width:700px;
+  margin-left: 15px;
+  clear: both;
 }
 
 form input {
-
 }
 
 .text {
@@ -54,6 +58,8 @@ form input {
   text-align: center;
 }
 
+
 #intro {
   text-align: left;
+  max-width: 70%;
 }
