@@ -4,7 +4,10 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgDonuts = avgDonuts;
+  this.donuts = [];
+
   var totalSales = 0;
+
 
   //returns random customers between min and max
   this.custGeneration = function() {
@@ -32,6 +35,7 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   //Clears total sales
   this.clearSales = function() {
     totalSales = 0;
+    this.donuts = [];
   }
 
 }
@@ -68,6 +72,7 @@ function buildTable(){
       for (i = 0; i < 11; i++) {
         var salesTest = document.createElement("td");
         var sales = shop.hourlySales();
+        shop.donuts.push(sales.toFixed(1))
         salesTest.textContent = sales.toFixed(1);
         shop.addTotal(sales);
 
