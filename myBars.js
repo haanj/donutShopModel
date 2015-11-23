@@ -25,7 +25,7 @@ function buildGraph(){
 	var options = {
 		scaleFontColor: "#10222B",
 		scaleFontFamily: "'Roboto Condensed', sans-serif",
-		tooltipFontColor: "#10222B",
+		tooltipFontColor: "#F6FFE0",
 		tooltipFontFamily: "'Roboto Condensed', sans-serif",
 		tooltipTemplate: function(data){
 			return data.value + " donuts sold in the " + data.label + " location.";
