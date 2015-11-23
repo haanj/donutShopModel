@@ -111,9 +111,6 @@ form input {
 .legend {
   font-size: 80%;
   position: relative;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 250px;
   top: -30px;
 }
 
@@ -178,7 +175,9 @@ form input {
   display: block;
   margin: auto;
   position: relative;
-  top: -155px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 250px;
 }
 
 
