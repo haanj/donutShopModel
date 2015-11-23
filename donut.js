@@ -87,7 +87,12 @@ function buildTable(){
     newRow.appendChild(salesTotal);
     table.appendChild(newRow);
   });
+  if (chart) {
+    chart.destroy();
+  }
+  chart = buildGraph();
 }
+
 
 //--- event Listening ---
 

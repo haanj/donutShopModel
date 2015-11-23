@@ -1,28 +1,35 @@
-var ctx = document.getElementById("myChart").getContext("2d");
+var chart;
 
-var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.5)",
-            strokeColor: "rgba(151,187,205,0.8)",
-            highlightFill: "rgba(151,187,205,0.75)",
-            highlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
-};
 
-var myBarChart = new Chart(ctx).Bar(data);
+function buildGraph(){
+	var ctx = document.getElementById("myChart").getContext("2d");
 
-console.log(Chart)
+	var data = {
+		labels: allShops.map(function(shop){
+				return shop.shopName;
+		    }),
+		datasets: [
+			{
+				label: "Donut Shops and Sales",
+				fillColor: "rgba(226,240,214,0.5)",
+				strokeColor: "rgba(226,240,214,0.8)",
+				highlightFill: "rgba(246,255,224,0.75)",
+				highlightStroke: "rgba(246,255,224,1)",
+				data: allShops.map(function(shop){
+					return shop.dailySales().toFixed(1);
+				})
+			}
+		]
+	};
+
+	var options = {
+		scaleFontColor: "#10222B",
+		scaleFontFamily: "'Roboto Condensed', sans-serif",
+		tooltipTemplate: function(data){
+			return data.value + " donuts sold in the " + data.label + " location.";
+		}
+	};
+
+	return new Chart(ctx).Bar(data, options);
+}
 
