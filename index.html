@@ -53,7 +53,20 @@
       <div class='formSet'>Average Donuts per Customer: <input type="text" name="avgDonuts"></div>
       <input type="submit" value="Add New Location">
     </form>
+    <div id='chartBody'>
+      <h3 id='leftLegend' class='legend'>Total Donut Sales</h3>
+      <div id='rightChart'>
+        <h2 id='chartHeading'>Total Sales By Location</h2>
+        <canvas id='myChart' height='400' width='400'></canvas>
+        <h3 class='legend'>Location</h3>
+      </div>
+      <div id='stupidInvisibleBox'></div>
+    </div>
   </main>
-  <script src="donut.js"></script>
+  <footer>
+  </footer>
 </body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js'></script>
+  <script src="myBars.js"></script>
+  <script src="donut.js"></script>
 </html>
