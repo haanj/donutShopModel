@@ -7,10 +7,13 @@ body {
   margin: 0 auto;
   min-height: 300%;
   background-color: #95AB63;
+  /*
+  background: -moz-linear-gradient(right, #95AB63 10%, #BDD684 80%, #95AB63 10%);
+  */
 }
 
 a {
-  text-decoration: none;
+  text-decorat 10%ion: none;
   color: #F6FFE0;
 }
 
@@ -140,6 +143,7 @@ form input {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 #chartHeading {
@@ -179,4 +183,10 @@ form input {
   flex-basis: 250px;
 }
 
+#tableWrapper {
+  overflow: auto;
+}
 
+#newLocation {
+  overflow: auto;
+}

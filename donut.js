@@ -29,11 +29,8 @@ DonutShop.prototype.dailySales = function() {
   });
 };
 
-//Clears total sales
-DonutShop.prototype.clearSales = function() {
-  this.donuts = [];
-};
 
+// clears sales and generates new sales
 DonutShop.prototype.generateSales = function() {
   this.donuts = [];
   for (i = 1; i <= this.hours; i++){
@@ -67,11 +64,6 @@ function initialTable(){
 
 function resetTable(){
   console.log(allShops);
-
-
-
-
-
 
   allShops = allShops.filter(function(shop){
     console.log(shop.shopName);
@@ -165,8 +157,6 @@ submitButton.addEventListener('submit', function(event){
     event.target.minCust.value = "";
     event.target.maxCust.value = "";
     event.target.avgDonuts.value = "";
-
-
 
     allShops.push(newStore);
 
