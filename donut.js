@@ -5,40 +5,34 @@ function DonutShop(shopName, minCust, maxCust, avgDonuts) {
   this.maxCust = maxCust;
   this.avgDonuts = avgDonuts;
   this.donuts = [];
-
-  var totalSales = 0;
-
-
-  //returns random customers between min and max
-  this.custGeneration = function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-    return customers;
   }
 
-  //calculates hourly sales using custGeneration()
-  this.hourlySales = function() {
-    var customers = this.custGeneration();
-    var hourlyDonuts = (customers * this.avgDonuts);
-    return hourlyDonuts;
-  }
+//returns random customers between min and max
+DonutShop.prototype.custGeneration = function() {
+  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
+  return customers;
+};
 
-  //adds sales to total donut sales
-  this.addTotal = function(moreSales) {
-    totalSales = totalSales + moreSales;
-  }
+//calculates hourly sales using custGeneration()
+DonutShop.prototype.hourlySales = function() {
+  var customers = this.custGeneration();
+  var hourlyDonuts = (customers * this.avgDonuts);
+  return hourlyDonuts;
+};
 
-  //returns total sales
-  this.dailySales = function() {
-    return totalSales;
-  }
 
-  //Clears total sales
-  this.clearSales = function() {
-    totalSales = 0;
-    this.donuts = [];
-  }
+//returns total sales
+DonutShop.prototype.dailySales = function() {
+  return this.donuts.reduce(function(total, num){
+    return Number(total) + Number(num);
+  });
+};
 
-}
+//Clears total sales
+DonutShop.prototype.clearSales = function() {
+  this.donuts = [];
+};
+
 
 // Initializes array of existing donut shops
 var allShops = [];
@@ -74,7 +68,6 @@ function buildTable(){
         var sales = shop.hourlySales();
         shop.donuts.push(sales.toFixed(1))
         salesTest.textContent = sales.toFixed(1);
-        shop.addTotal(sales);
 
         newRow.appendChild(salesTest);
       }
