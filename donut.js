@@ -43,6 +43,7 @@ DonutShop.prototype.generateSales = function() {
 
 // Initializes array of existing donut shops
 var allShops = [];
+var deletedShops = [];
 
 // Generates Sales for allShops
 function generateAllSales(){
@@ -64,6 +65,9 @@ function initialTable(){
 
 function resetTable(){
   console.log(allShops);
+
+  allShops = allShops.concat(deletedShops);
+  deletedShops = [];
 
   allShops = allShops.filter(function(shop){
     console.log(shop.shopName);
@@ -87,10 +91,20 @@ function buildTable(){
   console.log(allShops + " in build table");
   document.getElementById("shops").innerHTML = "";
 
+  var counter = 0;
   allShops.forEach(function(shop){
-    // prints location title to table
     var table = document.getElementById("shops");
     var newRow = document.createElement("tr");
+
+
+    // adds delete button
+    var newTableData = document.createElement("td");
+    newTableData.innerHTML = "<button class='deleteButton' id='del"+counter+"'>x</button>";
+    newRow.appendChild(newTableData);
+    counter++;
+
+    // prints location title to table
+
 
     var name = document.createElement("td");
     name.textContent = shop.shopName;
@@ -126,6 +140,7 @@ function buildTable(){
     chart.destroy();
   }
   chart = buildGraph();
+  addDeleteListeners();
 }
 
 
@@ -164,7 +179,22 @@ submitButton.addEventListener('submit', function(event){
 
 });
 
+// Deletes selected row
+function addDeleteListeners() {
+  var deleteButton = document.getElementsByClassName('deleteButton');
+  for(var i=0;i<deleteButton.length;i++){
+    deleteButton[i].addEventListener('click', function(){
+      var button = Number(this.id.slice(3));
+      deletedShops.push(allShops[button]);
+      allShops.splice(button, 1);
+      console.log(allShops);
+      buildTable();
+    });
+  }
+}
 
 // initial table build on page load
 initialTable();
 buildTable();
+
+
