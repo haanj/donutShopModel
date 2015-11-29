@@ -53,6 +53,9 @@ function generateAllSales(){
 }
 
 function initialTable(){
+
+
+  var encoded;
   var downtown = new DonutShop("Downtown", 8, 43, 4.5);
   var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
   var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
@@ -61,34 +64,32 @@ function initialTable(){
   allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
   generateAllSales();
   buildTable();
+
+  // save this to local
+  encoded = JSON.stringify(allShops);
+  localStorage.setItem('originalShops', encoded);
+
 }
 
 function resetTable(){
-  console.log(allShops);
+  // pulls originalShops
+  var data = localStorage.getItem('originalShops');
+  var hydrated = JSON.parse(data);
 
-  allShops = allShops.concat(deletedShops);
-  deletedShops = [];
 
-  allShops = allShops.filter(function(shop){
-    console.log(shop.shopName);
-    if (shop.shopName === "Downtown"
-        || shop.shopName === "Capitol Hill"
-        || shop.shopName === "South Lake Union"
-        || shop.shopName === "Wedgewood"
-        || shop.shopName === "Ballard") {
-      return true;
-    }
-  });
+  allShops = [];
 
-  console.log(allShops + " in resetTable()");
-
+  hydrated.forEach(function(shop){
+    var newStore = new DonutShop(shop.shopName, shop.minCust, shop.maxCust, shop.avgDonuts);
+    newStore.donuts = shop.donuts;
+    allShops.push(newStore);
+  })
 
   buildTable();
 }
 
 // Calculates and append sales data to table
 function buildTable(){
-  console.log(allShops + " in build table");
   document.getElementById("shops").innerHTML = "";
 
   var counter = 0;
@@ -187,7 +188,6 @@ function addDeleteListeners() {
       var button = Number(this.id.slice(3));
       deletedShops.push(allShops[button]);
       allShops.splice(button, 1);
-      console.log(allShops);
       buildTable();
     });
   }
