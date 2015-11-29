@@ -53,23 +53,25 @@ function generateAllSales(){
 }
 
 function initialTable(){
+  var original = localStorage.getItem('originalShops');
+  if (original) {
+    resetTable();
+  } else {
+      var downtown = new DonutShop("Downtown", 8, 43, 4.5);
+      var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
+      var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
+      var wedgewood = new DonutShop("Wedgewood", 2, 28, 1.25);
+      var ballard = new DonutShop("Ballard", 8, 56, 3.75);
+      allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
+      generateAllSales();
+      buildTable();
 
+      // save this to local
+      var encoded = JSON.stringify(allShops);
+      localStorage.setItem('originalShops', encoded);
+    }
+ }
 
-  var encoded;
-  var downtown = new DonutShop("Downtown", 8, 43, 4.5);
-  var capitolHill = new DonutShop("Capitol Hill", 4, 37, 2);
-  var southLakeUnion = new DonutShop("South Lake Union", 9, 23, 6.33);
-  var wedgewood = new DonutShop("Wedgewood", 2, 28, 1.25);
-  var ballard = new DonutShop("Ballard", 8, 56, 3.75);
-  allShops = [downtown, capitolHill, southLakeUnion, wedgewood, ballard];
-  generateAllSales();
-  buildTable();
-
-  // save this to local
-  encoded = JSON.stringify(allShops);
-  localStorage.setItem('originalShops', encoded);
-
-}
 
 function resetTable(){
   // pulls originalShops
@@ -157,6 +159,31 @@ recalcButton.addEventListener('click', function(){
 var resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', resetTable);
 
+// Saves upon pressing button
+var saveButton = document.getElementById('save');
+saveButton.addEventListener('click', function(event){
+  var encoded = JSON.stringify(allShops);
+  localStorage.setItem('savedShops', encoded);
+});
+
+// Recalls upon pressing button
+var recallButton = document.getElementById('recall');
+recallButton.addEventListener('click', function(event){
+  var data = localStorage.getItem('savedShops');
+  var hydrated = JSON.parse(data);
+
+  allShops = [];
+
+  hydrated.forEach(function(shop){
+    var newStore = new DonutShop(shop.shopName, shop.minCust, shop.maxCust, shop.avgDonuts);
+    newStore.donuts = shop.donuts;
+    allShops.push(newStore);
+  })
+
+  buildTable();
+});
+
+
 // Adds a user-inputted location, rebuilds the page
 var submitButton = document.getElementById('newLocation');
 submitButton.addEventListener('submit', function(event){
@@ -179,6 +206,8 @@ submitButton.addEventListener('submit', function(event){
     buildTable();
 
 });
+
+
 
 // Deletes selected row
 function addDeleteListeners() {
